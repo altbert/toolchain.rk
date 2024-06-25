@@ -26,7 +26,7 @@ if [ ! -f $DEST/arm-linux-gnueabi/bin/ld ]; then
 		../../src/binutils-2.20.1/configure --target=arm-linux-gnueabi \
 			--prefix=$DEST \
 			--program-prefix=arm-linux-gnueabi- \
-			--with-abi=aapcs-linux --with-arch=armv4t \
+			--with-abi=aapcs-linux --with-arch=armv6 \
 			--disable-nls --disable-werror > configure.log 2>&1
 	else
 		cd build/binutils
@@ -66,7 +66,7 @@ if [ ! -f $DEST/arm-linux-gnueabi/bin/gcc ]; then
 		cd build/gcc-pass1
 		../../src/gcc-4.4.3/configure --target=arm-linux-gnueabi \
 			--prefix=$DEST \
-			--without-headers --with-newlib --disable-shared --disable-threads --with-arch=armv4t \
+			--without-headers --with-newlib --disable-shared --disable-threads --with-arch=armv6 \
 			--disable-libmudflap --disable-libssp --disable-libgomp --enable-languages=c --disable-nls > configure.log 2>&1
 	else
 		cd build/gcc-pass1
@@ -105,7 +105,7 @@ if [ ! -f $DEST/lib/libc.a ]; then
 			--host=arm-linux-gnueabi \
 			--build=x86_64-linux-gnu \
 			--with-headers=$DEST/include \
-			--cache-file=config.cache --enable-kernel=2.6.0 \
+			--cache-file=config.cache --enable-kernel=2.6.0 --with-arch=armv6 \
 			--with-float=soft --with-fp --with-tls --with-__thread --without-gd \
 			--with-abi=aapcs-linux --without-cvs --disable-profile --disable-debug \
 			--enable-shared --enable-add-ons=ports,nptl --disable-nls > configure.log 2>&1
